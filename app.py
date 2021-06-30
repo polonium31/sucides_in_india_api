@@ -5,7 +5,7 @@ import random
 app = Flask(__name__)
 
 ##Connect to Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://buakmnshklnegn:149d9e91d1ac0c5377cffdc86a619c67a5163c01a0b4602e4c68c8c9aa421d34@ec2-3-89-0-52.compute-1.amazonaws.com:5432/d8fk4958unmjc7'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///suicides.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -20,9 +20,6 @@ class Suicides(db.Model):
     gender = db.Column(db.String)
     age_group = db.Column(db.String)
     total = db.Column(db.Integer)
-
-
-db.create_all()
 
 
 @app.route("/")
@@ -72,7 +69,7 @@ def search():
         }
         suicides_list.append(suicides_dict)
     if len(suicides_list) == 0:
-        return jsonify(error={"Not Found": "Sorry, we don't have data for the given state."}), 404
+        return jsonify(error={"Not Found": "Sorry, we don't have data for the given state."}),404
 
     all_suicides = {"suicides": suicides_list}
     all_suicides_json = jsonify(suicides=all_suicides["suicides"])
@@ -128,7 +125,7 @@ def find_year():
         }
         suicides_list_by_year.append(suicides_dict)
     if len(suicides_list_by_year) == 0:
-        return jsonify(error={"Not Found": "Sorry, we don't have data for the given year."}), 404
+        return jsonify(error={"Not Found": "Sorry, we don't have data for the given year."}),404
 
     all_suicides = {"suicides": suicides_list_by_year}
     all_suicides_json = jsonify(suicides=all_suicides["suicides"])
@@ -156,7 +153,7 @@ def type_code():
         }
         suicides_list_by_type.append(suicides_dict)
     if len(suicides_list_by_type) == 0:
-        return jsonify(error={"Not Found": "Sorry, we don't have data for the given type."}), 404
+        return jsonify(error={"Not Found": "Sorry, we don't have data for the given type."}),404
 
     all_suicides = {"suicides": suicides_list_by_type}
     all_suicides_json = jsonify(suicides=all_suicides["suicides"])
@@ -188,7 +185,7 @@ def by_age():
         }
         suicides_list_by_age.append(suicides_dict)
     if len(suicides_list_by_age) == 0:
-        return jsonify(error={"Not Found": "Sorry, we don't have data for the given type."}), 404
+        return jsonify(error={"Not Found": "Sorry, we don't have data for the given type."}),404
 
     all_suicides = {"suicides": suicides_list_by_age}
     all_suicides_json = jsonify(suicides=all_suicides["suicides"])
