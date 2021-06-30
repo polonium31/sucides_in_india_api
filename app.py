@@ -21,7 +21,7 @@ class Suicides(db.Model):
     age_group = db.Column(db.String)
     total = db.Column(db.Integer)
 
-
+db.create_all()
 @app.route("/")
 def home():
     return render_template("index.html")
