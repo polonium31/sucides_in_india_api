@@ -49,7 +49,7 @@ def get_all():
     return all_suicides_json
 
 
-@app.route("/search")
+@app.route("/search_state")
 def search():
     state = request.args.get("state")
     suicides = db.session.query(Suicides).filter_by(state=state)
