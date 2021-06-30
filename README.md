@@ -19,4 +19,4 @@ The database is so huge that it has almost 2,30,000 entries and the data I am us
 - While studing behavior of a person who end his/her life due to depression, failure, breakup's, trust break etc.
 
 
-![alt text](/static/Suicides in INDIA.png)
+![alt text](https://github.com/polonium31/sucides_in_india_api/blob/master/image.png)
